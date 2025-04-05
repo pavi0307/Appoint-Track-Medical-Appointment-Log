@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}AppointTrack{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AppointTrack</h1>
+            <button id="logoutBtn" onclick="logout()" style="display: none;">Logout</button>
+        </header>
+        
+        {% block content %}
+        <!-- Child templates will insert content here -->
+        {% endblock %}
+    </div>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

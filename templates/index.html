@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div id="authSection">
+        <div class="auth-forms">
+            <div class="form-card">
+                <h2>Register</h2>
+                <form id="registerForm">
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+
+            <div class="form-card">
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="appointmentSection" style="display: none;">
+    <div class="summary">
+        <h3>Upcoming Appointments (Next 7 days): <span id="upcomingCount">0</span></h3>
+    </div>
+
+    <div class="controls">
+        <button onclick="showAppointmentForm()">➕ New Appointment</button>
+        <select id="statusFilter" onchange="loadAppointments()">
+            <option value="">All Statuses</option>
+            <option value="Upcoming">Upcoming</option>
+            <option value="Completed">Completed</option>
+            <option value="Cancelled">Cancelled</option>
+        </select>
+        <button onclick="loadAppointments()" class="refresh-btn">🔄 Refresh</button>
+    </div>
+
+    <div id="appointmentForm" style="display: none;">
+        <form id="appointmentForm">
+            <input type="text" id="provider" name="provider" placeholder="Provider" required>
+            <input type="datetime-local" id="date_time" name="date_time" required>
+            <textarea id="reason" name="reason" placeholder="Reason" required></textarea>
+            <select id="status" name="status">
+                <option value="Upcoming">Upcoming</option>
+                <option value="Completed">Completed</option>
+                <option value="Cancelled">Cancelled</option>
+            </select>
+            <div class="form-actions">
+                <button type="submit">💾 Save</button>
+                <button type="button" onclick="document.getElementById('appointmentForm').style.display = 'none'">❌ Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="appointmentsList" class="appointments-grid">
+        <!-- Appointments will be loaded here -->
+    </div>
+</div>
+<script src="/static/js/app.js"></script>
+</body>
+</html>
+{% endblock %}
